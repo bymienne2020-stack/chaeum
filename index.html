@@ -411,18 +411,18 @@
   <div class="contact-grid">
     <div class="contact-info">
       <div class="contact-item"><div class="ci-label">PHONE</div><div class="ci-value"><a href="tel:01073410083">010-7341-0083</a></div></div>
-      <div class="contact-item"><div class="ci-label">EMAIL</div><div class="ci-value"><a href="/cdn-cgi/l/email-protection#63000b0206160e3c13110c071600170a0c0d230d021506114d000c0e"><span class="__cf_email__" data-cfemail="74171c151101192b04061b100117001d1b1a341a150211065a171b19">[chaeum_production@naver.com]</span></a></div></div>
+      <div class="contact-item"><div class="ci-label">EMAIL</div><div class="ci-value"><a href="/cdn-cgi/l/email-protection#63000b0206160e3c13110c071600170a0c0d230d021506114d000c0e"><span class="__cf_email__" data-cfemail="74171c151101192b04061b100117001d1b1a341a150211065a171b19">[email&#160;protected]</span></a></div></div>
       <div class="contact-item"><div class="ci-label">INSTAGRAM</div><div class="ci-value"><a href="https://www.instagram.com/chaeum_production" target="_blank">@chaeum_production</a></div></div>
       <div class="contact-item"><div class="ci-label">ADDRESS</div><div class="ci-value">서울시 강서구 강서로47길 165, 9층 901호</div></div>
       <div class="contact-item"><div class="ci-label">사업자등록번호</div><div class="ci-value">509-22-01323</div></div>
     </div>
     <form class="contact-form" onsubmit="handleSubmit(event)">
       <div class="form-row">
-        <input class="form-field" type="text" placeholder="이름" required />
-        <input class="form-field" type="tel" placeholder="연락처" required />
+        <input class="form-field" type="text" id="senderName" placeholder="이름" required />
+        <input class="form-field" type="tel" id="senderPhone" placeholder="연락처" required />
       </div>
-      <input class="form-field" type="email" placeholder="이메일" required />
-      <select class="form-field">
+      <input class="form-field" type="email" id="senderEmail" placeholder="이메일" required />
+      <select class="form-field" id="senderType">
         <option value="" disabled selected style="background:#13131C;">문의 유형을 선택해 주세요</option>
         <option style="background:#13131C;">스포츠 콘텐츠</option>
         <option style="background:#13131C;">회사 소개 영상</option>
@@ -432,7 +432,7 @@
         <option style="background:#13131C;">유튜브·SNS 콘텐츠</option>
         <option style="background:#13131C;">기타</option>
       </select>
-      <textarea class="form-field" placeholder="문의 내용을 자유롭게 입력해 주세요" required></textarea>
+      <textarea class="form-field" id="senderMessage" placeholder="문의 내용을 자유롭게 입력해 주세요" required></textarea>
       <button type="submit" class="form-submit" id="submitBtn">문의 보내기 →</button>
     </form>
   </div>
@@ -533,4 +533,31 @@
   // 문의 폼
   function handleSubmit(e) {
     e.preventDefault();
-    const btn = 
+    const name    = document.getElementById('senderName').value;
+    const phone   = document.getElementById('senderPhone').value;
+    const email   = document.getElementById('senderEmail').value;
+    const type    = document.getElementById('senderType').value || '미선택';
+    const message = document.getElementById('senderMessage').value;
+
+    const subject = encodeURIComponent('[채움프로덕션 문의] ' + type + ' - ' + name);
+    const body = encodeURIComponent(
+      '이름: ' + name + '\n' +
+      '연락처: ' + phone + '\n' +
+      '이메일: ' + email + '\n' +
+      '문의 유형: ' + type + '\n\n' +
+      '문의 내용:\n' + message
+    );
+
+    window.location.href = 'mailto:chaeum_production@naver.com?subject=' + subject + '&body=' + body;
+
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = '✓ 이메일 앱이 열립니다';
+    btn.style.background = '#2a9d5c';
+    setTimeout(() => {
+      btn.textContent = '문의 보내기 →';
+      btn.style.background = '';
+    }, 3000);
+  }
+</script>
+</body>
+</html>
