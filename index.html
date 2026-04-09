@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>채움프로덕션 | 브랜드와 사람을 연결하는 영상 제작사</title>
+  <meta name="description" content="스포츠·브랜디드·인터뷰·공연까지 기획부터 촬영·편집까지 원스톱 영상 제작 솔루션" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:    #0C0C12;
+      --bg2:   #13131C;
+      --bg3:   #1A1A26;
+      --gold:  #EFB935;
+      --gold2: #C99A1E;
+      --white: #FFFFFF;
+      --gray:  rgba(255,255,255,0.55);
+      --gray2: rgba(255,255,255,0.25);
+      --border: rgba(255,255,255,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 60px; height: 68px;
+      background: rgba(12,12,18,0.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-bar { width: 3px; height: 22px; background: var(--gold); border-radius: 2px; }
+    .logo-text { font-size: 18px; font-weight: 700; color: var(--gold); letter-spacing: -0.3px; }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--gray); text-decoration: none; transition: color .2s; font-weight: 500; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--gold); color: #0C0C12; font-size: 13px; font-weight: 700;
+      padding: 9px 22px; border-radius: 5px; text-decoration: none; transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--gold2); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; padding: 120px 60px 80px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; right: -100px; top: -150px;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(239,185,53,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(239,185,53,0.1); border: 1px solid rgba(239,185,53,0.3);
+      border-radius: 20px; padding: 6px 16px; margin-bottom: 30px;
+      font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 2.5px;
+    }
+    .hero h1 {
+      font-size: 64px; font-weight: 900; line-height: 1.15;
+      margin-bottom: 28px; word-break: keep-all;
+    }
+    .hero h1 .gold { color: var(--gold); }
+    .hero-desc {
+      font-size: 17px; color: var(--gray); line-height: 1.85;
+      margin-bottom: 44px; word-break: keep-all;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: #0C0C12; padding: 15px 30px;
+      border-radius: 6px; font-size: 15px; font-weight: 700;
+      text-decoration: none; transition: background .2s; font-family: inherit;
+    }
+    .btn-primary:hover { background: var(--gold2); }
+    .btn-secondary {
+      background: transparent; color: var(--white); padding: 15px 30px;
+      border-radius: 6px; font-size: 15px; border: 1.5px solid rgba(255,255,255,0.25);
+      text-decoration: none; transition: border-color .2s; font-family: inherit;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.5); }
+    .btn-gold-outline {
+      background: transparent; color: var(--gold); padding: 13px 28px;
+      border-radius: 6px; font-size: 14px; border: 1.5px solid var(--gold);
+      text-decoration: none; display: inline-block; transition: all .2s; font-family: inherit;
+    }
+    .btn-gold-outline:hover { background: rgba(239,185,53,0.1); }
+
+    /* Video card */
+    .video-card {
+      background: var(--bg3); border-radius: 16px;
+      border: 1px solid var(--border); overflow: hidden;
+      aspect-ratio: 16/10; position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .video-inner {
+      width: 84%; height: 78%;
+      background: var(--bg2); border-radius: 10px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 14px;
+      cursor: pointer; transition: transform .2s;
+    }
+    .video-inner:hover { transform: scale(1.02); }
+    .play-btn {
+      width: 72px; height: 72px; background: var(--gold);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    }
+    .play-icon {
+      width: 0; height: 0;
+      border-top: 13px solid transparent; border-bottom: 13px solid transparent;
+      border-left: 22px solid #0C0C12; margin-left: 5px;
+    }
+    .video-label { font-size: 11px; color: var(--gray2); letter-spacing: 2.5px; font-weight: 700; }
+    .video-badge {
+      position: absolute; top: 16px; left: 16px;
+      background: var(--gold); color: #0C0C12;
+      font-size: 10px; font-weight: 700;
+      padding: 5px 12px; border-radius: 4px; letter-spacing: 1.5px;
+    }
+    .video-dots { position: absolute; bottom: 16px; right: 20px; display: flex; gap: 7px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(239,185,53,0.4); }
+    .dot.active { background: var(--gold); }
+
+    /* ── STATS ── */
+    #stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      background: var(--gold);
+    }
+    .stat {
+      padding: 36px 0 30px; text-align: center;
+      border-right: 1px solid rgba(12,12,18,0.15);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-size: 42px; font-weight: 900; color: #0C0C12; }
+    .stat-label { font-size: 13px; color: rgba(12,12,18,0.6); margin-top: 5px; font-weight: 600; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 90px 60px; border-bottom: 1px solid var(--border); }
+    .sec-label {
+      font-size: 11px; font-weight: 700; color: var(--gold);
+      letter-spacing: 3px; margin-bottom: 12px;
+    }
+    .sec-title { font-size: 40px; font-weight: 900; margin-bottom: 14px; word-break: keep-all; }
+    .sec-desc { font-size: 15px; color: var(--gray); margin-bottom: 52px; word-break: keep-all; }
+
+    /* ── SERVICES ── */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .svc-card {
+      background: var(--bg2); border-radius: 12px;
+      border: 1px solid var(--border); padding: 32px 26px;
+      position: relative; overflow: hidden; transition: border-color .2s;
+    }
+    .svc-card:hover { border-color: rgba(239,185,53,0.3); }
+    .svc-card::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--gold);
+    }
+    .svc-icon { font-size: 26px; margin-bottom: 16px; display: block; }
+    .svc-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+    .svc-desc { font-size: 14px; color: var(--gray); line-height: 1.75; word-break: keep-all; }
+
+    /* ── PORTFOLIO ── */
+    #portfolio { background: var(--bg2); }
+    .port-tabs { display: flex; gap: 9px; margin-bottom: 38px; flex-wrap: wrap; }
+    .tab {
+      padding: 8px 20px; border-radius: 6px; font-size: 13px; font-weight: 600;
+      cursor: pointer; border: 1.5px solid var(--border); color: var(--gray);
+      background: transparent; transition: all .2s; font-family: inherit;
+    }
+    .tab:hover { border-color: rgba(239,185,53,0.4); color: var(--white); }
+    .tab.active { background: var(--gold); color: #0C0C12; border-color: var(--gold); }
+
+    .port-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    .port-card {
+      background: var(--bg3); border-radius: 12px;
+      border: 1px solid var(--border); overflow: hidden;
+      position: relative; cursor: pointer;
+      transition: border-color .2s, transform .2s;
+    }
+    .port-card:hover { border-color: rgba(239,185,53,0.35); transform: translateY(-3px); }
+    .port-card.large  { grid-column: span 7; aspect-ratio: 16/9; }
+    .port-card.medium { grid-column: span 5; aspect-ratio: 4/3; }
+    .port-card.small  { grid-column: span 4; aspect-ratio: 4/3; }
+    .port-inner {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--bg2); flex-direction: column; gap: 12px;
+    }
+    .port-play {
+      width: 52px; height: 52px; background: var(--gold);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    }
+    .port-play-icon {
+      width: 0; height: 0; margin-left: 4px;
+      border-top: 10px solid transparent; border-bottom: 10px solid transparent;
+      border-left: 17px solid #0C0C12;
+    }
+    .port-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.88));
+      padding: 50px 18px 18px;
+    }
+    .port-tag {
+      font-size: 10px; font-weight: 700; color: var(--gold);
+      letter-spacing: 1.5px; margin-bottom: 5px;
+    }
+    .port-name { font-size: 14px; font-weight: 700; line-height: 1.4; word-break: keep-all; }
+    .port-center { text-align: center; margin-top: 44px; }
+
+    /* ── PROCESS ── */
+    .process-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 0; margin-top: 10px;
+    }
+    .proc-step { text-align: center; padding: 36px 20px; position: relative; }
+    .proc-arrow {
+      position: absolute; right: -14px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px; color: var(--gold2); z-index: 1;
+    }
+    .proc-step:last-child .proc-arrow { display: none; }
+    .proc-circle {
+      width: 68px; height: 68px; border-radius: 50%;
+      margin: 0 auto 18px; display: flex; align-items: center; justify-content: center;
+      font-size: 20px; font-weight: 900; transition: all .2s;
+      background: var(--bg3); color: var(--gray2);
+      border: 1.5px solid var(--border);
+    }
+    .proc-step:first-child .proc-circle,
+    .proc-step:hover .proc-circle {
+      background: var(--gold); color: #0C0C12; border-color: var(--gold);
+    }
+    .proc-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .proc-desc { font-size: 13px; color: var(--gray); line-height: 1.6; word-break: keep-all; }
+
+    /* ── CLIENTS ── */
+    #clients { background: var(--bg2); }
+    .clients-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .client-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px 22px;
+      transition: border-color .2s;
+    }
+    .client-card:hover { border-color: rgba(239,185,53,0.3); }
+    .client-icon { font-size: 22px; margin-bottom: 12px; display: block; }
+    .client-name { font-size: 15px; font-weight: 700; margin-bottom: 5px; }
+    .client-type { font-size: 12px; color: var(--gray); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: start; margin-top: 48px;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 14px; }
+    .contact-item {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px 26px;
+    }
+    .ci-label {
+      font-size: 10px; color: var(--gold); font-weight: 700;
+      letter-spacing: 2.5px; margin-bottom: 7px;
+    }
+    .ci-value { font-size: 15px; font-weight: 600; }
+    .ci-value a { color: var(--white); text-decoration: none; }
+    .ci-value a:hover { color: var(--gold); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 13px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+    .form-field {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 9px; padding: 15px 18px; width: 100%;
+      font-size: 14px; color: var(--white); outline: none;
+      font-family: inherit; transition: border-color .2s;
+    }
+    .form-field::placeholder { color: var(--gray2); }
+    .form-field:focus { border-color: rgba(239,185,53,0.45); }
+    textarea.form-field { resize: none; height: 120px; }
+    .form-submit {
+      background: var(--gold); color: #0C0C12; border: none;
+      border-radius: 9px; padding: 16px; font-size: 15px; font-weight: 700;
+      cursor: pointer; font-family: inherit; transition: background .2s; width: 100%;
+    }
+    .form-submit:hover { background: var(--gold2); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 36px 60px;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-left { display: flex; flex-direction: column; gap: 8px; }
+    .footer-logo { font-size: 16px; font-weight: 700; color: var(--gold); }
+    .footer-info { font-size: 12px; color: var(--gray2); line-height: 1.7; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: var(--gray2); text-decoration: none; font-size: 13px; transition: color .2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── TOP BUTTON ── */
+    .top-btn {
+      position: fixed; bottom: 32px; right: 32px;
+      width: 48px; height: 48px; background: var(--gold);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 20px; color: #0C0C12; font-weight: 900;
+      box-shadow: 0 4px 20px rgba(239,185,53,0.3);
+      opacity: 0; transition: opacity .3s; pointer-events: none;
+    }
+    .top-btn.visible { opacity: 1; pointer-events: all; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      #hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 48px; }
+      .hero h1 { font-size: 44px; }
+      #stats { grid-template-columns: repeat(2, 1fr); }
+      section { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .port-grid { grid-template-columns: 1fr 1fr; }
+      .port-card.large, .port-card.medium, .port-card.small { grid-column: span 1; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .clients-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      footer { flex-direction: column; align-items: flex-start; padding: 32px 24px; }
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 36px; }
+      .services-grid, .clients-grid, .process-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      #stats { grid-template-columns: repeat(2, 1fr); }
+      .sec-title { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-bar"></div>
+    <span class="logo-text">채움프로덕션</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">서비스</a></li>
+    <li><a href="#portfolio">포트폴리오</a></li>
+    <li><a href="#process">프로세스</a></li>
+    <li><a href="#clients">클라이언트</a></li>
+    <li><a href="#contact">회사소개</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">문의하기</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div>
+    <div class="hero-badge">MEDIA PRODUCTION STUDIO</div>
+    <h1>브랜드와 사람을<br>연결하는<br><span class="gold">영상 제작사</span></h1>
+    <p class="hero-desc">
+      스포츠·브랜디드·인터뷰·공연까지<br>
+      기획부터 촬영·편집까지 원스톱 솔루션
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#contact">제작 문의하기 →</a>
+      <a class="btn-secondary" href="#portfolio">포트폴리오 보기</a>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="video-badge">SPORTS</div>
+    <div class="video-inner">
+      <div class="play-btn"><div class="play-icon"></div></div>
+      <div class="video-label">SHOWREEL 2024</div>
+    </div>
+    <div class="video-dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stat"><div class="stat-num">300+</div><div class="stat-label">제작 영상</div></div>
+  <div class="stat"><div class="stat-num">50+</div><div class="stat-label">협업 클라이언트</div></div>
+  <div class="stat"><div class="stat-num">10년</div><div class="stat-label">업계 경력</div></div>
+  <div class="stat"><div class="stat-num">1위</div><div class="stat-label">스포츠 콘텐츠</div></div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="sec-label">WHAT WE DO</p>
+  <h2 class="sec-title">제작 서비스</h2>
+  <p class="sec-desc">기획부터 납품까지, 모든 영상 제작을 원스톱으로 제공합니다</p>
+  <div class="services-grid">
+    <div class="svc-card">
+      <span class="svc-icon">🏐</span>
+      <div class="svc-title">스포츠 콘텐츠</div>
+      <p class="svc-desc">현장감과 팬심을 살린 차별화된 스포츠 영상. 유튜브·SNS 채널 기획 및 운영까지 원스톱으로 진행합니다.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">🎬</span>
+      <div class="svc-title">회사 소개 영상</div>
+      <p class="svc-desc">브랜드 신뢰도와 정체성을 담은 기업 소개 영상. 실사 촬영과 기계설비 3D 제작을 결합한 효과적인 영상 제작.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">📢</span>
+      <div class="svc-title">홍보·바이럴 영상</div>
+      <p class="svc-desc">타깃 맞춤형 메시지로 전환율을 높이는 홍보 영상. 해외 바이어용 영상 및 다국어 자막 제작 가능.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">🎤</span>
+      <div class="svc-title">인터뷰 영상</div>
+      <p class="svc-desc">정보 전달과 신뢰 구축, 브랜드 감성을 동시에 담아내는 인터뷰형 영상 제작.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">🎭</span>
+      <div class="svc-title">공연·스케치 영상</div>
+      <p class="svc-desc">FPV 드론 촬영으로 현장감 넘치는 공연·행사 기록 영상. 30초 스팟부터 풀 다큐멘터리까지.</p>
+    </div>
+    <div class="svc-card">
+      <span class="svc-icon">▶</span>
+      <div class="svc-title">유튜브·SNS 콘텐츠</div>
+      <p class="svc-desc">채널 기획부터 영상 제작, SNS 계정 운영까지 브랜드 미디어 전체를 원스톱으로 운영합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <p class="sec-label">OUR WORK</p>
+  <h2 class="sec-title">포트폴리오</h2>
+  <div class="port-tabs">
+    <button class="tab active" onclick="filterTab(this,'all')">전체</button>
+    <button class="tab" onclick="filterTab(this,'sports')">스포츠</button>
+    <button class="tab" onclick="filterTab(this,'corporate')">회사소개</button>
+    <button class="tab" onclick="filterTab(this,'promo')">홍보·바이럴</button>
+    <button class="tab" onclick="filterTab(this,'stage')">공연·스케치</button>
+    <button class="tab" onclick="filterTab(this,'interview')">인터뷰</button>
+  </div>
+  <div class="port-grid" id="portGrid">
+    <div class="port-card large" data-cat="sports">
+      <div class="port-inner">
+        <div class="port-play"><div class="port-play-icon"></div></div>
+      </div>
+      <div class="port-overlay">
+        <div class="port-tag">SPORTS</div>
+        <div class="port-name">흥국생명배구단 유튜브 콘텐츠 제작 및 SNS 운영</div>
+      </div>
+    </div>
+    <div class="port-card medium" data-cat="sports">
+      <div class="port-inner">
+        <div class="port-play"><div class="port-play-icon"></div></div>
+      </div>
+      <div class="port-overlay">
+        <div class="port-tag">SPORTS</div>
+        <div class="port-name">한국배구연맹 온라인 영상 콘텐츠 강화사업</div>
+      </div>
+    </div>
+    <div class="port-card small" data-cat="corporate">
+      <div class="port-inner">
+        <div class="port-play"><div class="port-play-icon"></div></div>
+      </div>
+      <div class="port-overlay">
+        <div class="port-tag">CORPORATE</div>
+        <div class="port-name">LK엔지니어링 회사소개영상</div>
+      </div>
+    </div>
+    <div class="port-card small" data-cat="promo">
+      <div class="port-inner">
+        <div class="port-play"><div class="port-play-icon"></div></div>
+      </div>
+      <div class="port-overlay">
+        <div class="port-tag">PROMO</div>
+        <div class="port-name">넥센 특수타이어 해외바이어용 영상</div>
+      </div>
+    </div>
+    <div class="port-card small" data-cat="promo">
+      <div class="port-inner">
+        <div class="port-play"><div class="port-play-icon"></div></div>
+      </div>
+      <div class="port-overlay">
+        <div class="port-tag">VIRAL</div>
+        <div class="port-name">다미즐 디자인워터 바이럴 3종 시리즈</div>
+      </div>
+    </div>
+    <div class="port-card small" data-cat="sports">
+      <div class="port-inner">
+        <div class="port-play"><div class="port-play-icon"></div></div>
+      </div>
+      <div class="port-overlay">
+        <div class="port-tag">SPORTS</div>
+        <div class="port-name">전남드래곤즈 영상 콘텐츠 제작</div>
+      </div>
+    </div>
+    <div class="port-card small" data-cat="stage">
+      <div class="port-inner">
+        <div class="port-play"><div class="port-play-icon"></div></div>
+      </div>
+      <div class="port-overlay">
+        <div class="port-tag">STAGE</div>
+        <div class="port-name">소리극 '뗏꾼' FPV 드론 스팟영상</div>
+      </div>
+    </div>
+    <div class="port-card small" data-cat="interview">
+      <div class="port-inner">
+        <div class="port-play"><div class="port-play-icon"></div></div>
+      </div>
+      <div class="port-overlay">
+        <div class="port-tag">INTERVIEW</div>
+        <div class="port-name">CM테크 직원 인터뷰형 회사소개</div>
+      </div>
+    </div>
+    <div class="port-card small" data-cat="corporate">
+      <div class="port-inner">
+        <div class="port-play"><div class="port-play-icon"></div></div>
+      </div>
+      <div class="port-overlay">
+        <div class="port-tag">YOUTUBE</div>
+        <div class="port-name">현대차증권 유튜브 인포메이션 영상</div>
+      </div>
+    </div>
+  </div>
+  <div class="port-center">
+    <a class="btn-gold-outline" href="#contact">전체 포트폴리오 문의 →</a>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <p class="sec-label">HOW WE WORK</p>
+  <h2 class="sec-title">제작 프로세스</h2>
+  <p class="sec-desc">처음 미팅부터 최종 납품까지 체계적으로 진행합니다</p>
+  <div class="process-grid">
+    <div class="proc-step">
+      <div class="proc-circle">01</div>
+      <div class="proc-title">기획·미팅</div>
+      <p class="proc-desc">목표 파악 및<br>방향 설정</p>
+      <div class="proc-arrow">→</div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-circle">02</div>
+      <div class="proc-title">촬영 준비</div>
+      <p class="proc-desc">스크립트 작성<br>장비·장소 준비</p>
+      <div class="proc-arrow">→</div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-circle">03</div>
+      <div class="proc-title">현장 촬영</div>
+      <p class="proc-desc">전문 장비로<br>고품질 촬영</p>
+      <div class="proc-arrow">→</div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-circle">04</div>
+      <div class="proc-title">편집·후반</div>
+      <p class="proc-desc">색보정·CG·<br>사운드 작업</p>
+      <div class="proc-arrow">→</div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-circle">05</div>
+      <div class="proc-title">납품·피드백</div>
+      <p class="proc-desc">최종 전달 및<br>수정 지원</p>
+      <div class="proc-arrow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <p class="sec-label">OUR CLIENTS</p>
+  <h2 class="sec-title">주요 클라이언트</h2>
+  <p class="sec-desc">다양한 분야의 브랜드와 함께 최고의 영상을 만들었습니다</p>
+  <div class="clients-grid">
+    <div class="client-card">
+      <span class="client-icon">🏐</span>
+      <div class="client-name">흥국생명배구단</div>
+      <div class="client-type">스포츠 · 유튜브·SNS 운영</div>
+    </div>
+    <div class="client-card">
+      <span class="client-icon">🏐</span>
+      <div class="client-name">한국배구연맹</div>
+      <div class="client-type">스포츠 · 온라인 콘텐츠 강화사업</div>
+    </div>
+    <div class="client-card">
+      <span class="client-icon">⚽</span>
+      <div class="client-name">전남드래곤즈</div>
+      <div class="client-type">스포츠 · 영상 콘텐츠 제작</div>
+    </div>
+    <div class="client-card">
+      <span class="client-icon">🏭</span>
+      <div class="client-name">넥센타이어</div>
+      <div class="client-type">홍보 · 해외바이어 영상</div>
+    </div>
+    <div class="client-card">
+      <span class="client-icon">⚙️</span>
+      <div class="client-name">LK엔지니어링</div>
+      <div class="client-type">기업 · 회사소개 + 3D영상</div>
+    </div>
+    <div class="client-card">
+      <span class="client-icon">📈</span>
+      <div class="client-name">현대차증권</div>
+      <div class="client-type">유튜브 · 인포메이션 영상</div>
+    </div>
+    <div class="client-card">
+      <span class="client-icon">🔬</span>
+      <div class="client-name">선마린바이오테크</div>
+      <div class="client-type">기업 · 회사소개영상</div>
+    </div>
+    <div class="client-card">
+      <span class="client-icon">💧</span>
+      <div class="client-name">다미즐</div>
+      <div class="client-type">바이럴 · 제품 홍보영상 3종</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="sec-label">GET IN TOUCH</p>
+  <h2 class="sec-title">지금 바로 문의하세요</h2>
+  <p class="sec-desc">아이디어가 생겼다면, 채움프로덕션이 최고의 영상으로 만들어 드립니다</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="ci-label">PHONE</div>
+        <div class="ci-value"><a href="tel:01073410083">010-7341-0083</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-label">EMAIL</div>
+        <div class="ci-value"><a href="mailto:chaeum_production@naver.com">chaeum_production@naver.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-label">ADDRESS</div>
+        <div class="ci-value">서울시 강서구 강서로47길 165, 9층 901호</div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-label">사업자등록번호</div>
+        <div class="ci-value">509-22-01323</div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <input class="form-field" type="text" placeholder="이름" required />
+        <input class="form-field" type="tel" placeholder="연락처" required />
+      </div>
+      <input class="form-field" type="email" placeholder="이메일" required />
+      <select class="form-field">
+        <option value="" disabled selected style="background:#13131C;">문의 유형을 선택해 주세요</option>
+        <option style="background:#13131C;">스포츠 콘텐츠</option>
+        <option style="background:#13131C;">회사 소개 영상</option>
+        <option style="background:#13131C;">홍보·바이럴 영상</option>
+        <option style="background:#13131C;">인터뷰 영상</option>
+        <option style="background:#13131C;">공연·스케치 영상</option>
+        <option style="background:#13131C;">유튜브·SNS 콘텐츠</option>
+        <option style="background:#13131C;">기타</option>
+      </select>
+      <textarea class="form-field" placeholder="문의 내용을 자유롭게 입력해 주세요" required></textarea>
+      <button type="submit" class="form-submit" id="submitBtn">문의 보내기 →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-logo">채움프로덕션</div>
+    <div class="footer-info">
+      사업자등록번호 509-22-01323 · 서울시 강서구 강서로47길 165, 9층 901호<br>
+      비디오물 제작업 신고 완료 · 직접생산확인증명서 보유
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href="https://youtube.com" target="_blank">유튜브</a>
+    <a href="https://instagram.com" target="_blank">인스타그램</a>
+    <a href="mailto:chaeum_production@naver.com">이메일</a>
+  </div>
+</footer>
+
+<!-- TOP BUTTON -->
+<a class="top-btn" href="#" id="topBtn">↑</a>
+
+<script>
+  // Tab filter
+  function filterTab(el, cat) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    document.querySelectorAll('.port-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    // Reset grid sizing for filtered view
+    const large = document.querySelector('.port-card.large');
+    if (cat !== 'all' && large) {
+      large.style.gridColumn = 'span 1';
+      large.style.aspectRatio = '4/3';
+    } else if (large) {
+      large.style.gridColumn = '';
+      large.style.aspectRatio = '';
+    }
+  }
+
+  // Scroll to top button
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('topBtn');
+    btn.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = '✓ 문의가 전송되었습니다';
+    btn.style.background = '#2a9d5c';
+    setTimeout(() => {
+      btn.textContent = '문의 보내기 →';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+
+  // Smooth active nav on scroll
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--white)' : '';
+    });
+  });
+</script>
+</body>
+</html>
