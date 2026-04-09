@@ -24,6 +24,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; background: var(--bg); color: var(--white); line-height: 1.6; }
 
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 999;
       display: flex; align-items: center; justify-content: space-between;
@@ -34,12 +35,13 @@
     .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .logo-bar { width: 3px; height: 22px; background: var(--gold); border-radius: 2px; }
     .logo-text { font-size: 18px; font-weight: 700; color: var(--gold); }
-    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a { font-size: 14px; color: var(--gray); text-decoration: none; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--white); }
-    .nav-cta { background: var(--gold); color: #0C0C12; font-size: 13px; font-weight: 700; padding: 9px 22px; border-radius: 5px; text-decoration: none; }
+    .nav-cta { background: var(--gold); color: #0C0C12; font-size: 13px; font-weight: 700; padding: 9px 22px; border-radius: 5px; text-decoration: none; transition: background .2s; }
     .nav-cta:hover { background: var(--gold2); }
 
+    /* ── HERO ── */
     #hero {
       min-height: 100vh; padding: 120px 60px 80px;
       display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
@@ -51,51 +53,44 @@
       background: radial-gradient(circle, rgba(239,185,53,0.07) 0%, transparent 65%);
       pointer-events: none;
     }
-    .hero-badge {
-      display: inline-flex; align-items: center;
-      background: rgba(239,185,53,0.1); border: 1px solid rgba(239,185,53,0.3);
-      border-radius: 20px; padding: 6px 16px; margin-bottom: 30px;
-      font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 2.5px;
-    }
+    .hero-badge { display: inline-flex; align-items: center; background: rgba(239,185,53,0.1); border: 1px solid rgba(239,185,53,0.3); border-radius: 20px; padding: 6px 16px; margin-bottom: 30px; font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 2.5px; }
     .hero h1 { font-size: 64px; font-weight: 900; line-height: 1.15; margin-bottom: 28px; word-break: keep-all; }
     .hero h1 .gold { color: var(--gold); }
     .hero-desc { font-size: 17px; color: var(--gray); line-height: 1.85; margin-bottom: 44px; word-break: keep-all; }
     .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-    .btn-primary { background: var(--gold); color: #0C0C12; padding: 15px 30px; border-radius: 6px; font-size: 15px; font-weight: 700; text-decoration: none; }
+    .btn-primary { background: var(--gold); color: #0C0C12; padding: 15px 30px; border-radius: 6px; font-size: 15px; font-weight: 700; text-decoration: none; transition: background .2s; }
     .btn-primary:hover { background: var(--gold2); }
-    .btn-secondary { background: transparent; color: var(--white); padding: 15px 30px; border-radius: 6px; font-size: 15px; border: 1.5px solid rgba(255,255,255,0.25); text-decoration: none; }
+    .btn-secondary { background: transparent; color: var(--white); padding: 15px 30px; border-radius: 6px; font-size: 15px; border: 1.5px solid rgba(255,255,255,0.25); text-decoration: none; transition: border-color .2s; }
     .btn-secondary:hover { border-color: rgba(255,255,255,0.5); }
-    .btn-gold-outline { background: transparent; color: var(--gold); padding: 13px 28px; border-radius: 6px; font-size: 14px; border: 1.5px solid var(--gold); text-decoration: none; display: inline-block; }
+    .btn-gold-outline { background: transparent; color: var(--gold); padding: 13px 28px; border-radius: 6px; font-size: 14px; border: 1.5px solid var(--gold); text-decoration: none; display: inline-block; transition: all .2s; }
     .btn-gold-outline:hover { background: rgba(239,185,53,0.1); }
 
-    .hero-video-card {
-      border-radius: 16px; border: 1px solid var(--border); overflow: hidden;
-      aspect-ratio: 16/10; position: relative; cursor: pointer; transition: border-color .2s;
-    }
+    /* Hero video card */
+    .hero-video-card { border-radius: 16px; border: 1px solid var(--border); overflow: hidden; aspect-ratio: 16/10; position: relative; cursor: pointer; transition: border-color .2s; }
     .hero-video-card:hover { border-color: rgba(239,185,53,0.4); }
     .hero-video-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
     .hero-video-card:hover img { transform: scale(1.03); }
-    .hero-video-overlay {
-      position: absolute; inset: 0; background: rgba(0,0,0,0.35);
-      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px;
-    }
+    .hero-video-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.35); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px; }
     .play-btn { width: 72px; height: 72px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform .2s; }
     .hero-video-card:hover .play-btn { transform: scale(1.1); }
     .play-icon { width: 0; height: 0; border-top: 13px solid transparent; border-bottom: 13px solid transparent; border-left: 22px solid #0C0C12; margin-left: 5px; }
-    .video-label { font-size: 11px; color: rgba(255,255,255,0.75); letter-spacing: 2.5px; font-weight: 700; }
+    .video-label { font-size: 11px; color: rgba(255,255,255,0.8); letter-spacing: 2.5px; font-weight: 700; }
     .video-badge { position: absolute; top: 16px; left: 16px; background: var(--gold); color: #0C0C12; font-size: 10px; font-weight: 700; padding: 5px 12px; border-radius: 4px; letter-spacing: 1.5px; }
 
+    /* ── STATS ── */
     #stats { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--gold); }
     .stat { padding: 36px 0 30px; text-align: center; border-right: 1px solid rgba(12,12,18,0.15); }
     .stat:last-child { border-right: none; }
     .stat-num { font-size: 42px; font-weight: 900; color: #0C0C12; }
     .stat-label { font-size: 13px; color: rgba(12,12,18,0.6); margin-top: 5px; font-weight: 600; }
 
+    /* ── SECTIONS ── */
     section { padding: 90px 60px; border-bottom: 1px solid var(--border); }
     .sec-label { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 3px; margin-bottom: 12px; }
     .sec-title { font-size: 40px; font-weight: 900; margin-bottom: 14px; word-break: keep-all; }
     .sec-desc { font-size: 15px; color: var(--gray); margin-bottom: 52px; word-break: keep-all; }
 
+    /* ── SERVICES ── */
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .svc-card { background: var(--bg2); border-radius: 12px; border: 1px solid var(--border); padding: 32px 26px; position: relative; overflow: hidden; transition: border-color .2s; }
     .svc-card:hover { border-color: rgba(239,185,53,0.3); }
@@ -104,45 +99,53 @@
     .svc-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
     .svc-desc { font-size: 14px; color: var(--gray); line-height: 1.75; word-break: keep-all; }
 
+    /* ── PORTFOLIO ── */
     #portfolio { background: var(--bg2); }
+
+    /* 탭 */
     .port-tabs { display: flex; gap: 9px; margin-bottom: 38px; flex-wrap: wrap; }
     .tab { padding: 8px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); color: var(--gray); background: transparent; transition: all .2s; font-family: inherit; }
     .tab:hover { border-color: rgba(239,185,53,0.4); color: var(--white); }
     .tab.active { background: var(--gold); color: #0C0C12; border-color: var(--gold); }
 
+    /* 카테고리 색상 뱃지 */
+    .tag-sports   { color: #60CFFF; }
+    .tag-corporate{ color: #A78BFA; }
+    .tag-promo    { color: #FB923C; }
+    .tag-stage    { color: #34D399; }
+    .tag-interview{ color: #F472B6; }
+    .tag-youtube  { color: #FF5B5B; }
+
+    /* 포트폴리오 그리드 */
     .port-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
-    .port-card {
-      background: var(--bg3); border-radius: 12px; border: 1px solid var(--border);
-      overflow: hidden; position: relative; cursor: pointer; transition: border-color .2s, transform .2s;
-    }
+    .port-card { background: var(--bg3); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; position: relative; cursor: pointer; transition: border-color .2s, transform .2s; }
     .port-card:hover { border-color: rgba(239,185,53,0.45); transform: translateY(-3px); }
     .port-card.large  { grid-column: span 7; aspect-ratio: 16/9; }
     .port-card.medium { grid-column: span 5; aspect-ratio: 4/3; }
     .port-card.small  { grid-column: span 4; aspect-ratio: 4/3; }
     .port-thumb { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
     .port-card:hover .port-thumb { transform: scale(1.05); }
-    .port-play-overlay {
-      position: absolute; inset: 0; background: rgba(0,0,0,0.3);
-      display: flex; align-items: center; justify-content: center; transition: background .2s;
-    }
+    .port-play-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; transition: background .2s; }
     .port-card:hover .port-play-overlay { background: rgba(0,0,0,0.55); }
     .port-play { width: 52px; height: 52px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform .2s; }
     .port-card:hover .port-play { transform: scale(1.15); }
     .port-play-icon { width: 0; height: 0; margin-left: 4px; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 17px solid #0C0C12; }
-    .port-info { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 50px 18px 18px; }
-    .port-tag { font-size: 10px; font-weight: 700; color: var(--gold); letter-spacing: 1.5px; margin-bottom: 5px; }
-    .port-name { font-size: 14px; font-weight: 700; line-height: 1.4; word-break: keep-all; }
+    .port-info { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.92)); padding: 50px 18px 18px; }
+    .port-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 5px; }
+    .port-name { font-size: 14px; font-weight: 700; line-height: 1.4; word-break: keep-all; color: var(--white); }
     .port-center { text-align: center; margin-top: 44px; }
 
+    /* ── PROCESS ── */
     .process-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
     .proc-step { text-align: center; padding: 36px 20px; position: relative; }
-    .proc-arrow { position: absolute; right: -14px; top: 50%; transform: translateY(-50%); font-size: 20px; color: var(--gold2); z-index: 1; }
+    .proc-arrow { position: absolute; right: -14px; top: 48%; transform: translateY(-50%); font-size: 20px; color: var(--gold2); z-index: 1; }
     .proc-step:last-child .proc-arrow { display: none; }
     .proc-circle { width: 68px; height: 68px; border-radius: 50%; margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; background: var(--bg3); color: var(--gray2); border: 1.5px solid var(--border); }
     .proc-step:first-child .proc-circle { background: var(--gold); color: #0C0C12; border-color: var(--gold); }
     .proc-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
     .proc-desc { font-size: 13px; color: var(--gray); line-height: 1.6; word-break: keep-all; }
 
+    /* ── CLIENTS ── */
     #clients { background: var(--bg2); }
     .clients-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     .client-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 28px 22px; transition: border-color .2s; }
@@ -151,6 +154,7 @@
     .client-name { font-size: 15px; font-weight: 700; margin-bottom: 5px; }
     .client-type { font-size: 12px; color: var(--gray); }
 
+    /* ── CONTACT ── */
     #contact { background: var(--bg); }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-top: 48px; }
     .contact-info { display: flex; flex-direction: column; gap: 14px; }
@@ -165,35 +169,36 @@
     .form-field::placeholder { color: var(--gray2); }
     .form-field:focus { border-color: rgba(239,185,53,0.45); }
     textarea.form-field { resize: none; height: 120px; }
-    .form-submit { background: var(--gold); color: #0C0C12; border: none; border-radius: 9px; padding: 16px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; width: 100%; }
+    .form-submit { background: var(--gold); color: #0C0C12; border: none; border-radius: 9px; padding: 16px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; width: 100%; transition: background .2s; }
     .form-submit:hover { background: var(--gold2); }
 
+    /* ── FOOTER ── */
     footer { padding: 36px 60px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
     .footer-left { display: flex; flex-direction: column; gap: 8px; }
     .footer-logo { font-size: 16px; font-weight: 700; color: var(--gold); }
     .footer-info { font-size: 12px; color: var(--gray2); line-height: 1.7; }
-    .footer-links { display: flex; gap: 20px; }
-    .footer-links a { color: var(--gray2); text-decoration: none; font-size: 13px; }
+    .footer-links { display: flex; gap: 20px; align-items: center; }
+    .footer-links a { color: var(--gray2); text-decoration: none; font-size: 13px; display: flex; align-items: center; gap: 6px; transition: color .2s; }
     .footer-links a:hover { color: var(--gold); }
+    .sns-icon { width: 18px; height: 18px; display: inline-block; }
 
+    /* ── TOP BUTTON ── */
     .top-btn { position: fixed; bottom: 32px; right: 32px; width: 48px; height: 48px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 20px; color: #0C0C12; font-weight: 900; opacity: 0; transition: opacity .3s; pointer-events: none; }
     .top-btn.visible { opacity: 1; pointer-events: all; }
 
-    /* ─── VIDEO MODAL ─── */
-    .modal-backdrop {
-      display: none; position: fixed; inset: 0; z-index: 9000;
-      background: rgba(0,0,0,0.93); align-items: center; justify-content: center;
-    }
+    /* ── VIDEO MODAL ── */
+    .modal-backdrop { display: none; position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,0.93); align-items: center; justify-content: center; }
     .modal-backdrop.open { display: flex; }
     .modal-box { position: relative; width: 90%; max-width: 960px; background: var(--bg2); border-radius: 14px; border: 1px solid var(--border); overflow: hidden; }
-    .modal-close { position: absolute; top: 14px; right: 16px; z-index: 10; background: rgba(0,0,0,0.6); border: none; color: var(--white); font-size: 20px; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-    .modal-close:hover { background: rgba(239,185,53,0.3); }
+    .modal-close { position: absolute; top: 14px; right: 16px; z-index: 10; background: rgba(0,0,0,0.65); border: none; color: var(--white); font-size: 20px; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .modal-close:hover { background: rgba(239,185,53,0.35); }
     .modal-video { position: relative; aspect-ratio: 16/9; width: 100%; }
     .modal-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
     .modal-info { padding: 18px 24px 22px; }
-    .modal-tag { font-size: 10px; color: var(--gold); font-weight: 700; letter-spacing: 2px; margin-bottom: 5px; }
+    .modal-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; margin-bottom: 5px; }
     .modal-title { font-size: 17px; font-weight: 700; }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
       nav { padding: 0 24px; }
       .nav-links { display: none; }
@@ -219,6 +224,7 @@
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a class="logo" href="#"><div class="logo-bar"></div><span class="logo-text">채움프로덕션</span></a>
   <ul class="nav-links">
@@ -231,6 +237,7 @@
   <a class="nav-cta" href="#contact">문의하기</a>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
   <div>
     <div class="hero-badge">MEDIA PRODUCTION STUDIO</div>
@@ -241,7 +248,7 @@
       <a class="btn-secondary" href="#portfolio">포트폴리오 보기</a>
     </div>
   </div>
-  <div class="hero-video-card" onclick="openModal('J9yTUMfKaGU','SHOWREEL','SHOWREEL 2024 — 채움프로덕션')">
+  <div class="hero-video-card" onclick="openModal('J9yTUMfKaGU','SHOWREEL','SHOWREEL 2024 — 채움프로덕션','')">
     <div class="video-badge">SHOWREEL</div>
     <img src="https://img.youtube.com/vi/J9yTUMfKaGU/maxresdefault.jpg" alt="쇼릴 썸네일" onerror="this.src='https://img.youtube.com/vi/J9yTUMfKaGU/hqdefault.jpg'">
     <div class="hero-video-overlay">
@@ -251,6 +258,7 @@
   </div>
 </section>
 
+<!-- STATS -->
 <div id="stats">
   <div class="stat"><div class="stat-num">300+</div><div class="stat-label">제작 영상</div></div>
   <div class="stat"><div class="stat-num">50+</div><div class="stat-label">협업 클라이언트</div></div>
@@ -258,6 +266,7 @@
   <div class="stat"><div class="stat-num">1위</div><div class="stat-label">스포츠 콘텐츠</div></div>
 </div>
 
+<!-- SERVICES -->
 <section id="services">
   <p class="sec-label">WHAT WE DO</p>
   <h2 class="sec-title">제작 서비스</h2>
@@ -272,71 +281,89 @@
   </div>
 </section>
 
+<!-- PORTFOLIO -->
 <section id="portfolio">
   <p class="sec-label">OUR WORK</p>
   <h2 class="sec-title">포트폴리오</h2>
   <div class="port-tabs">
-    <button class="tab active" onclick="filterTab(this,'all')">전체</button>
-    <button class="tab" onclick="filterTab(this,'sports')">스포츠</button>
-    <button class="tab" onclick="filterTab(this,'corporate')">회사소개</button>
-    <button class="tab" onclick="filterTab(this,'promo')">홍보·바이럴</button>
-    <button class="tab" onclick="filterTab(this,'stage')">공연·스케치</button>
-    <button class="tab" onclick="filterTab(this,'interview')">인터뷰</button>
+    <button class="tab active" onclick="filterTab(this,'all')">전체 (11)</button>
+    <button class="tab" onclick="filterTab(this,'sports')">🏐 스포츠</button>
+    <button class="tab" onclick="filterTab(this,'corporate')">🎬 회사소개</button>
+    <button class="tab" onclick="filterTab(this,'promo')">📢 홍보·바이럴</button>
+    <button class="tab" onclick="filterTab(this,'stage')">🎭 공연·스케치</button>
+    <button class="tab" onclick="filterTab(this,'interview')">🎤 인터뷰</button>
   </div>
   <div class="port-grid" id="portGrid">
 
-    <div class="port-card large" data-cat="sports" onclick="openModal('hoKaTjHPhJY','SPORTS','흥국생명배구단 유튜브 콘텐츠 제작 및 SNS 운영')">
+    <!-- ─ SPORTS ─ -->
+    <div class="port-card large" data-cat="sports" onclick="openModal('hoKaTjHPhJY','SPORTS','흥국생명배구단 유튜브 콘텐츠 제작 및 SNS 운영','tag-sports')">
       <img class="port-thumb" src="https://img.youtube.com/vi/hoKaTjHPhJY/maxresdefault.jpg" alt="흥국생명배구단" onerror="this.src='https://img.youtube.com/vi/hoKaTjHPhJY/hqdefault.jpg'">
       <div class="port-play-overlay"><div class="port-play"><div class="port-play-icon"></div></div></div>
-      <div class="port-info"><div class="port-tag">SPORTS</div><div class="port-name">흥국생명배구단 유튜브 콘텐츠 제작 및 SNS 운영</div></div>
+      <div class="port-info"><div class="port-tag tag-sports">SPORTS</div><div class="port-name">흥국생명배구단 유튜브 콘텐츠 제작 및 SNS 운영</div></div>
     </div>
 
-    <div class="port-card medium" data-cat="sports" onclick="openModal('eG8Q_w4C7S8','SPORTS','한국배구연맹 온라인 영상 콘텐츠 강화사업')">
+    <div class="port-card medium" data-cat="sports" onclick="openModal('eG8Q_w4C7S8','SPORTS','한국배구연맹 온라인 영상 콘텐츠 강화사업','tag-sports')">
       <img class="port-thumb" src="https://img.youtube.com/vi/eG8Q_w4C7S8/maxresdefault.jpg" alt="한국배구연맹" onerror="this.src='https://img.youtube.com/vi/eG8Q_w4C7S8/hqdefault.jpg'">
       <div class="port-play-overlay"><div class="port-play"><div class="port-play-icon"></div></div></div>
-      <div class="port-info"><div class="port-tag">SPORTS</div><div class="port-name">한국배구연맹 온라인 영상 콘텐츠 강화사업</div></div>
+      <div class="port-info"><div class="port-tag tag-sports">SPORTS</div><div class="port-name">한국배구연맹 온라인 영상 콘텐츠 강화사업</div></div>
     </div>
 
-    <div class="port-card small" data-cat="corporate" onclick="openModal('M_MQxjE0OfM','CORPORATE','LK엔지니어링 회사소개영상')">
-      <img class="port-thumb" src="https://img.youtube.com/vi/M_MQxjE0OfM/maxresdefault.jpg" alt="LK엔지니어링" onerror="this.src='https://img.youtube.com/vi/M_MQxjE0OfM/hqdefault.jpg'">
-      <div class="port-play-overlay"><div class="port-play"><div class="port-play-icon"></div></div></div>
-      <div class="port-info"><div class="port-tag">CORPORATE</div><div class="port-name">LK엔지니어링 회사소개영상</div></div>
-    </div>
-
-    <div class="port-card small" data-cat="promo" onclick="openModal('DN5y8xHLiPs','PROMO','넥센 특수타이어 해외바이어용 영상')">
-      <img class="port-thumb" src="https://img.youtube.com/vi/DN5y8xHLiPs/maxresdefault.jpg" alt="넥센타이어" onerror="this.src='https://img.youtube.com/vi/DN5y8xHLiPs/hqdefault.jpg'">
-      <div class="port-play-overlay"><div class="port-play"><div class="port-play-icon"></div></div></div>
-      <div class="port-info"><div class="port-tag">PROMO</div><div class="port-name">넥센 특수타이어 해외바이어용 영상</div></div>
-    </div>
-
-    <div class="port-card small" data-cat="promo" onclick="openModal('WkrPx4hHlf0','VIRAL','다미즐 디자인워터 바이럴 영상')">
-      <img class="port-thumb" src="https://img.youtube.com/vi/WkrPx4hHlf0/maxresdefault.jpg" alt="다미즐" onerror="this.src='https://img.youtube.com/vi/WkrPx4hHlf0/hqdefault.jpg'">
-      <div class="port-play-overlay"><div class="port-play"><div class="port-play-icon"></div></div></div>
-      <div class="port-info"><div class="port-tag">VIRAL</div><div class="port-name">다미즐 디자인워터 바이럴 3종 시리즈</div></div>
-    </div>
-
-    <div class="port-card small" data-cat="sports" onclick="openModal('0N7LjriDV88','SPORTS','전남드래곤즈 영상 콘텐츠 제작')">
+    <div class="port-card small" data-cat="sports" onclick="openModal('0N7LjriDV88','SPORTS','전남드래곤즈 영상 콘텐츠 제작','tag-sports')">
       <img class="port-thumb" src="https://img.youtube.com/vi/0N7LjriDV88/maxresdefault.jpg" alt="전남드래곤즈" onerror="this.src='https://img.youtube.com/vi/0N7LjriDV88/hqdefault.jpg'">
       <div class="port-play-overlay"><div class="port-play"><div class="port-play-icon"></div></div></div>
-      <div class="port-info"><div class="port-tag">SPORTS</div><div class="port-name">전남드래곤즈 영상 콘텐츠 제작</div></div>
+      <div class="port-info"><div class="port-tag tag-sports">SPORTS</div><div class="port-name">전남드래곤즈 영상 콘텐츠 제작</div></div>
     </div>
 
-    <div class="port-card small" data-cat="stage" onclick="openModal('F1t-tqX-lAw','STAGE','소리극 뗏꾼 FPV 드론 스팟영상')">
-      <img class="port-thumb" src="https://img.youtube.com/vi/F1t-tqX-lAw/maxresdefault.jpg" alt="소리극 뗏꾼" onerror="this.src='https://img.youtube.com/vi/F1t-tqX-lAw/hqdefault.jpg'">
+    <!-- ─ CORPORATE ─ -->
+    <div class="port-card small" data-cat="corporate" onclick="openModal('M_MQxjE0OfM','CORPORATE','LK엔지니어링 회사소개영상 (실사 + 3D)','tag-corporate')">
+      <img class="port-thumb" src="https://img.youtube.com/vi/M_MQxjE0OfM/maxresdefault.jpg" alt="LK엔지니어링" onerror="this.src='https://img.youtube.com/vi/M_MQxjE0OfM/hqdefault.jpg'">
       <div class="port-play-overlay"><div class="port-play"><div class="port-play-icon"></div></div></div>
-      <div class="port-info"><div class="port-tag">STAGE</div><div class="port-name">소리극 '뗏꾼' FPV 드론 스팟영상</div></div>
+      <div class="port-info"><div class="port-tag tag-corporate">CORPORATE</div><div class="port-name">LK엔지니어링 회사소개영상 (실사 + 3D)</div></div>
     </div>
 
-    <div class="port-card small" data-cat="interview" onclick="openModal('FQSDMOXteIo','INTERVIEW','CM테크 직원 인터뷰형 회사소개')">
-      <img class="port-thumb" src="https://img.youtube.com/vi/FQSDMOXteIo/maxresdefault.jpg" alt="CM테크" onerror="this.src='https://img.youtube.com/vi/FQSDMOXteIo/hqdefault.jpg'">
-      <div class="port-play-overlay"><div class="port-play"><div class="port-play-icon"></div></div></div>
-      <div class="port-info"><div class="port-tag">INTERVIEW</div><div class="port-name">CM테크 직원 인터뷰형 회사소개</div></div>
-    </div>
-
-    <div class="port-card small" data-cat="corporate" onclick="openModal('U1M1naSIVfA','YOUTUBE','현대차증권 유튜브 인포메이션 영상')">
+    <div class="port-card small" data-cat="corporate" onclick="openModal('U1M1naSIVfA','YOUTUBE','현대차증권 유튜브 인포메이션 영상','tag-youtube')">
       <img class="port-thumb" src="https://img.youtube.com/vi/U1M1naSIVfA/maxresdefault.jpg" alt="현대차증권" onerror="this.src='https://img.youtube.com/vi/U1M1naSIVfA/hqdefault.jpg'">
       <div class="port-play-overlay"><div class="port-play"><div class="port-play-icon"></div></div></div>
-      <div class="port-info"><div class="port-tag">YOUTUBE</div><div class="port-name">현대차증권 유튜브 인포메이션 영상</div></div>
+      <div class="port-info"><div class="port-tag tag-youtube">YOUTUBE</div><div class="port-name">현대차증권 유튜브 인포메이션 영상</div></div>
+    </div>
+
+    <!-- ─ PROMO / VIRAL ─ -->
+    <div class="port-card small" data-cat="promo" onclick="openModal('DN5y8xHLiPs','PROMO','넥센 특수타이어 해외바이어용 영상','tag-promo')">
+      <img class="port-thumb" src="https://img.youtube.com/vi/DN5y8xHLiPs/maxresdefault.jpg" alt="넥센타이어" onerror="this.src='https://img.youtube.com/vi/DN5y8xHLiPs/hqdefault.jpg'">
+      <div class="port-play-overlay"><div class="port-play"><div class="port-play-icon"></div></div></div>
+      <div class="port-info"><div class="port-tag tag-promo">PROMO</div><div class="port-name">넥센 특수타이어 해외바이어용 영상</div></div>
+    </div>
+
+    <div class="port-card small" data-cat="promo" onclick="openModal('WkrPx4hHlf0','VIRAL','다미즐 디자인워터 바이럴 3종 시리즈','tag-promo')">
+      <img class="port-thumb" src="https://img.youtube.com/vi/WkrPx4hHlf0/maxresdefault.jpg" alt="다미즐" onerror="this.src='https://img.youtube.com/vi/WkrPx4hHlf0/hqdefault.jpg'">
+      <div class="port-play-overlay"><div class="port-play"><div class="port-play-icon"></div></div></div>
+      <div class="port-info"><div class="port-tag tag-promo">VIRAL</div><div class="port-name">다미즐 디자인워터 바이럴 3종 시리즈</div></div>
+    </div>
+
+    <!-- ─ STAGE / SKETCH ─ -->
+    <div class="port-card small" data-cat="stage" onclick="openModal('F1t-tqX-lAw','STAGE','소리극 뗏꾼 FPV 드론 스팟영상','tag-stage')">
+      <img class="port-thumb" src="https://img.youtube.com/vi/F1t-tqX-lAw/maxresdefault.jpg" alt="소리극 뗏꾼" onerror="this.src='https://img.youtube.com/vi/F1t-tqX-lAw/hqdefault.jpg'">
+      <div class="port-play-overlay"><div class="port-play"><div class="port-play-icon"></div></div></div>
+      <div class="port-info"><div class="port-tag tag-stage">STAGE</div><div class="port-name">소리극 '뗏꾼' FPV 드론 스팟영상</div></div>
+    </div>
+
+    <div class="port-card small" data-cat="stage" onclick="openModal('UdhqnaicE6U','STAGE','공연 스팟영상','tag-stage')">
+      <img class="port-thumb" src="https://img.youtube.com/vi/UdhqnaicE6U/maxresdefault.jpg" alt="공연스팟영상" onerror="this.src='https://img.youtube.com/vi/UdhqnaicE6U/hqdefault.jpg'">
+      <div class="port-play-overlay"><div class="port-play"><div class="port-play-icon"></div></div></div>
+      <div class="port-info"><div class="port-tag tag-stage">STAGE</div><div class="port-name">공연 스팟영상</div></div>
+    </div>
+
+    <div class="port-card small" data-cat="stage" onclick="openModal('_ILodtebtYU','SKETCH','스케치 영상','tag-stage')">
+      <img class="port-thumb" src="https://img.youtube.com/vi/_ILodtebtYU/maxresdefault.jpg" alt="스케치영상" onerror="this.src='https://img.youtube.com/vi/_ILodtebtYU/hqdefault.jpg'">
+      <div class="port-play-overlay"><div class="port-play"><div class="port-play-icon"></div></div></div>
+      <div class="port-info"><div class="port-tag tag-stage">SKETCH</div><div class="port-name">스케치 영상</div></div>
+    </div>
+
+    <!-- ─ INTERVIEW ─ -->
+    <div class="port-card small" data-cat="interview" onclick="openModal('FQSDMOXteIo','INTERVIEW','CM테크 직원 인터뷰형 회사소개','tag-interview')">
+      <img class="port-thumb" src="https://img.youtube.com/vi/FQSDMOXteIo/maxresdefault.jpg" alt="CM테크" onerror="this.src='https://img.youtube.com/vi/FQSDMOXteIo/hqdefault.jpg'">
+      <div class="port-play-overlay"><div class="port-play"><div class="port-play-icon"></div></div></div>
+      <div class="port-info"><div class="port-tag tag-interview">INTERVIEW</div><div class="port-name">CM테크 직원 인터뷰형 회사소개</div></div>
     </div>
 
   </div>
@@ -345,6 +372,7 @@
   </div>
 </section>
 
+<!-- PROCESS -->
 <section id="process">
   <p class="sec-label">HOW WE WORK</p>
   <h2 class="sec-title">제작 프로세스</h2>
@@ -358,6 +386,7 @@
   </div>
 </section>
 
+<!-- CLIENTS -->
 <section id="clients">
   <p class="sec-label">OUR CLIENTS</p>
   <h2 class="sec-title">주요 클라이언트</h2>
@@ -374,6 +403,7 @@
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <p class="sec-label">GET IN TOUCH</p>
   <h2 class="sec-title">지금 바로 문의하세요</h2>
@@ -382,6 +412,7 @@
     <div class="contact-info">
       <div class="contact-item"><div class="ci-label">PHONE</div><div class="ci-value"><a href="tel:01073410083">010-7341-0083</a></div></div>
       <div class="contact-item"><div class="ci-label">EMAIL</div><div class="ci-value"><a href="mailto:chaeum_production@naver.com">chaeum_production@naver.com</a></div></div>
+      <div class="contact-item"><div class="ci-label">INSTAGRAM</div><div class="ci-value"><a href="https://www.instagram.com/chaeum_production" target="_blank">@chaeum_production</a></div></div>
       <div class="contact-item"><div class="ci-label">ADDRESS</div><div class="ci-value">서울시 강서구 강서로47길 165, 9층 901호</div></div>
       <div class="contact-item"><div class="ci-label">사업자등록번호</div><div class="ci-value">509-22-01323</div></div>
     </div>
@@ -407,21 +438,34 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-left">
     <div class="footer-logo">채움프로덕션</div>
     <div class="footer-info">사업자등록번호 509-22-01323 · 서울시 강서구 강서로47길 165, 9층 901호<br>비디오물 제작업 신고 완료 · 직접생산확인증명서 보유</div>
   </div>
   <div class="footer-links">
-    <a href="https://youtube.com" target="_blank">유튜브</a>
-    <a href="https://instagram.com" target="_blank">인스타그램</a>
+    <a href="https://www.instagram.com/chaeum_production" target="_blank">
+      <svg class="sns-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+      인스타그램
+    </a>
+    <a href="https://youtube.com" target="_blank">
+      <svg class="sns-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M21.8 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.5 5 12 5 12 5s-4.5 0-7 .1c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S2 9.6 2 11.2v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.3.9C6.8 19 12 19 12 19s4.5 0 7-.1c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5C22 9.6 21.8 8 21.8 8zM10 15V9l5.2 3-5.2 3z"/>
+      </svg>
+      유튜브
+    </a>
     <a href="mailto:chaeum_production@naver.com">이메일</a>
   </div>
 </footer>
 
 <a class="top-btn" href="#" id="topBtn">↑</a>
 
-<!-- 영상 팝업 모달 -->
+<!-- VIDEO MODAL -->
 <div class="modal-backdrop" id="modalBackdrop" onclick="closeModalOutside(event)">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()">✕</button>
@@ -436,9 +480,12 @@
 </div>
 
 <script>
-  function openModal(videoId, tag, title) {
+  // 영상 팝업
+  function openModal(videoId, tag, title, tagClass) {
     document.getElementById('modalIframe').src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
-    document.getElementById('modalTag').textContent = tag;
+    const tagEl = document.getElementById('modalTag');
+    tagEl.textContent = tag;
+    tagEl.className = 'modal-tag ' + (tagClass || '');
     document.getElementById('modalTitle').textContent = title;
     document.getElementById('modalBackdrop').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -453,30 +500,47 @@
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
+  // 포트폴리오 탭 필터
   function filterTab(el, cat) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
     const cards = document.querySelectorAll('.port-card');
+    let visible = 0;
     cards.forEach(card => {
-      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+      const show = cat === 'all' || card.dataset.cat === cat;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
     });
+    // 필터 시 large 카드 그리드 조정
     const large = document.querySelector('.port-card.large');
     if (large) {
-      large.style.gridColumn = (cat !== 'all') ? 'span 1' : '';
-      large.style.aspectRatio = (cat !== 'all') ? '4/3' : '';
+      const isLargeVisible = cat === 'all' || large.dataset.cat === cat;
+      if (isLargeVisible && cat === 'all') {
+        large.style.gridColumn = 'span 7';
+        large.style.aspectRatio = '16/9';
+      } else {
+        large.style.gridColumn = 'span 1';
+        large.style.aspectRatio = '4/3';
+      }
     }
   }
 
+  // 맨 위로 버튼
   window.addEventListener('scroll', () => {
     document.getElementById('topBtn').classList.toggle('visible', window.scrollY > 400);
   });
 
+  // 문의 폼
   function handleSubmit(e) {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
     btn.textContent = '✓ 문의가 전송되었습니다';
     btn.style.background = '#2a9d5c';
-    setTimeout(() => { btn.textContent = '문의 보내기 →'; btn.style.background = ''; e.target.reset(); }, 3000);
+    setTimeout(() => {
+      btn.textContent = '문의 보내기 →';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
   }
 </script>
 </body>
