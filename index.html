@@ -213,11 +213,20 @@
     /* ── CLIENTS ── */
     #clients { background: var(--bg2); }
     .clients-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .client-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 28px 22px; transition: border-color .2s; }
-    .client-card:hover { border-color: rgba(239,185,53,0.3); }
-    .client-icon { font-size: 22px; margin-bottom: 12px; display: block; }
-    .client-name { font-size: 15px; font-weight: 700; margin-bottom: 5px; }
-    .client-type { font-size: 12px; color: var(--gray); }
+    .client-card {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 12px;
+      padding: 24px 20px; transition: border-color .2s, transform .2s;
+      display: flex; align-items: center; justify-content: center; min-height: 110px;
+    }
+    .client-card:hover { border-color: rgba(239,185,53,0.3); transform: translateY(-2px); }
+    .client-card img {
+      max-width: 100%; max-height: 65px; object-fit: contain;
+      filter: brightness(0) invert(1); opacity: 0.65; transition: opacity .2s;
+    }
+    .client-card:hover img { opacity: 1; filter: brightness(0) invert(1); }
+    .client-card.no-logo { flex-direction: column; gap: 8px; }
+    .client-icon { font-size: 22px; }
+    .client-name { font-size: 14px; font-weight: 700; color: var(--white); opacity: 0.75; }
 
     /* ── CONTACT ── */
     #contact { background: var(--bg); }
@@ -457,14 +466,14 @@
   <h2 class="sec-title">주요 클라이언트</h2>
   <p class="sec-desc">다양한 분야의 브랜드와 함께 최고의 영상을 만들었습니다</p>
   <div class="clients-grid">
-    <div class="client-card"><span class="client-icon">🏐</span><div class="client-name">흥국생명배구단</div><div class="client-type">스포츠 · 유튜브·SNS 운영</div></div>
-    <div class="client-card"><span class="client-icon">🏐</span><div class="client-name">한국배구연맹</div><div class="client-type">스포츠 · 온라인 콘텐츠 강화사업</div></div>
-    <div class="client-card"><span class="client-icon">⚽</span><div class="client-name">전남드래곤즈</div><div class="client-type">스포츠 · 영상 콘텐츠 제작</div></div>
-    <div class="client-card"><span class="client-icon">🏭</span><div class="client-name">넥센타이어</div><div class="client-type">홍보 · 해외바이어 영상</div></div>
-    <div class="client-card"><span class="client-icon">⚙️</span><div class="client-name">LK엔지니어링</div><div class="client-type">기업 · 회사소개 + 3D영상</div></div>
-    <div class="client-card"><span class="client-icon">📈</span><div class="client-name">현대차증권</div><div class="client-type">유튜브 · 인포메이션 영상</div></div>
-    <div class="client-card"><span class="client-icon">🔬</span><div class="client-name">선마린바이오테크</div><div class="client-type">기업 · 회사소개영상</div></div>
-    <div class="client-card"><span class="client-icon">💧</span><div class="client-name">다미즐</div><div class="client-type">바이럴 · 제품 홍보영상 3종</div></div>
+    <div class="client-card"><img src="images/logo-heungkuk.png" alt="흥국생명배구단 핑크스파이더스"></div>
+    <div class="client-card"><img src="images/logo-kovo.png" alt="한국배구연맹 KOVO"></div>
+    <div class="client-card"><img src="images/logo-jeonnam.png" alt="전남드래곤즈"></div>
+    <div class="client-card"><img src="images/logo-nexen.png" alt="넥센타이어"></div>
+    <div class="client-card no-logo"><span class="client-icon">⚙️</span><div class="client-name">LK엔지니어링</div></div>
+    <div class="client-card no-logo"><span class="client-icon">📈</span><div class="client-name">현대차증권</div></div>
+    <div class="client-card no-logo"><span class="client-icon">🔬</span><div class="client-name">선마린바이오테크</div></div>
+    <div class="client-card no-logo"><span class="client-icon">💧</span><div class="client-name">다미즐</div></div>
   </div>
 </section>
 
