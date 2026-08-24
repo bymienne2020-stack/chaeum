@@ -33,7 +33,7 @@
       --border2:rgba(244,237,216,.15);
     }
     html{scroll-behavior:smooth}
-    body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:var(--navy);color:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:var(--navy);color:var(--cream);overflow-x:hidden;overflow-y:auto;-webkit-font-smoothing:antialiased}
 
     /* ── NAV ── */
     nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:68px;transition:background .4s,border .4s}
@@ -235,7 +235,6 @@
 
     /* ── RESPONSIVE ── */
     @media(max-width:1024px){
-      html{scroll-snap-type:none}
       nav{padding:0 32px}
       .hero-content,.showreel-pill,.scroll-hint{padding-left:32px;padding-right:32px;left:32px;right:32px}
       .showreel-pill{right:32px}
