@@ -32,7 +32,7 @@
       --border:rgba(244,237,216,.08);
       --border2:rgba(244,237,216,.15);
     }
-    html{scroll-behavior:smooth;scroll-snap-type:y mandatory}
+    html{scroll-behavior:smooth}
     body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;background:var(--navy);color:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
     /* ── NAV ── */
@@ -48,7 +48,7 @@
     .nav-cta:hover{background:var(--white);transform:scale(1.03)}
 
     /* ── HERO : 풀스크린 ── */
-    #hero{height:100vh;position:relative;overflow:hidden;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:flex-end}
+    #hero{height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
     .hero-video-bg{position:absolute;inset:0;z-index:0}
     .hero-video-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.35) saturate(.6)}
     .hero-grad{position:absolute;inset:0;background:linear-gradient(to top,var(--navy) 0%,rgba(8,13,26,.7) 50%,rgba(8,13,26,.2) 100%);z-index:1}
@@ -88,7 +88,7 @@
     .sf-lbl{font-size:13px;color:var(--text-dim);margin-top:8px;font-weight:300;letter-spacing:.3px}
 
     /* ── WORK : 풀스크린 카드들 ── */
-    #work{scroll-snap-align:start}
+    #work{}
     .work-header{padding:80px 56px 48px;display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--border)}
     .wh-left .eyebrow{font-size:11px;font-weight:600;color:var(--accent);letter-spacing:4px;margin-bottom:14px}
     .wh-left h2{font-size:clamp(36px,4vw,56px);font-weight:800;color:var(--cream);letter-spacing:-1.5px;line-height:1}
@@ -133,7 +133,7 @@
     .vg-pt{width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid var(--cream);margin-left:3px}
 
     /* ── SERVICES ── */
-    #services{background:var(--cream);padding:100px 56px;scroll-snap-align:start}
+    #services{background:var(--cream);padding:100px 56px;}
     #services .eyebrow{font-size:11px;font-weight:600;color:var(--navy3);letter-spacing:4px;margin-bottom:14px;opacity:.5}
     #services h2{font-size:clamp(36px,4vw,56px);font-weight:800;color:var(--navy);letter-spacing:-1.5px;margin-bottom:64px}
     .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--cream3)}
@@ -163,14 +163,14 @@
     #clients{background:var(--navy);padding:100px 56px;border-top:1px solid var(--border)}
     #clients .eyebrow{font-size:11px;font-weight:600;color:var(--accent);letter-spacing:4px;margin-bottom:14px}
     #clients h2{font-size:clamp(36px,4vw,56px);font-weight:800;color:var(--cream);letter-spacing:-1.5px;margin-bottom:64px}
-    .cl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden}
-    .cl-cell{background:var(--navy2);display:flex;align-items:center;justify-content:center;padding:40px 32px;min-height:120px;transition:background .25s}
-    .cl-cell:hover{background:var(--navy3)}
-    .cl-cell img{max-width:100%;max-height:52px;object-fit:contain;filter:brightness(0) invert(1);opacity:.45;transition:opacity .3s}
-    .cl-cell:hover img{opacity:.85}
-    .cl-cell.txt{flex-direction:column;gap:6px}
-    .cl-icon{font-size:20px;opacity:.4}
-    .cl-name{font-size:13px;font-weight:500;color:var(--text-dim);letter-spacing:.1px}
+    .cl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
+    .cl-cell{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:36px 52px;transition:background .3s;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+    .cl-cell::after{content:'→';position:absolute;right:52px;font-size:22px;color:var(--accent);opacity:0;transform:translateX(-8px);transition:all .3s}
+    .cl-cell:hover{background:var(--navy2)}
+    .cl-cell:hover::after{opacity:1;transform:translateX(0)}
+    .cl-num{font-size:11px;color:var(--accent);letter-spacing:2px;font-weight:600;flex-shrink:0}
+    .cl-name{font-size:clamp(18px,2.5vw,32px);font-weight:700;color:var(--cream);letter-spacing:-0.5px;text-align:right;padding-right:60px}
+    .cl-tag{font-size:11px;color:var(--text-dim);letter-spacing:1.5px;font-weight:400}
 
     /* ── CTA ── */
     .cta-full{background:var(--cream);padding:100px 56px;display:flex;align-items:center;justify-content:space-between;gap:60px;border-top:1px solid var(--cream3)}
@@ -490,14 +490,14 @@
   <div class="eyebrow rv">OUR CLIENTS</div>
   <h2 class="rv">주요 클라이언트</h2>
   <div class="cl-grid rv">
-    <div class="cl-cell"><img src="images/logo-heungkuk.png" alt="흥국생명배구단"></div>
-    <div class="cl-cell"><img src="images/logo-kovo.png" alt="한국배구연맹 KOVO"></div>
-    <div class="cl-cell"><img src="images/logo-jeonnam.png" alt="전남드래곤즈"></div>
-    <div class="cl-cell"><img src="images/logo-nexen.png" alt="넥센타이어"></div>
-    <div class="cl-cell txt"><span class="cl-icon">⚙️</span><span class="cl-name">LK엔지니어링</span></div>
-    <div class="cl-cell txt"><span class="cl-icon">📈</span><span class="cl-name">현대차증권</span></div>
-    <div class="cl-cell txt"><span class="cl-icon">🔬</span><span class="cl-name">선마린바이오테크</span></div>
-    <div class="cl-cell txt"><span class="cl-icon">💧</span><span class="cl-name">다미즐</span></div>
+    <div class="cl-cell"><span class="cl-num">01</span><span class="cl-name">흥국생명배구단</span></div>
+    <div class="cl-cell"><span class="cl-num">02</span><span class="cl-name">한국배구연맹</span></div>
+    <div class="cl-cell"><span class="cl-num">03</span><span class="cl-name">전남드래곤즈</span></div>
+    <div class="cl-cell"><span class="cl-num">04</span><span class="cl-name">넥센타이어</span></div>
+    <div class="cl-cell"><span class="cl-num">05</span><span class="cl-name">LK엔지니어링</span></div>
+    <div class="cl-cell"><span class="cl-num">06</span><span class="cl-name">현대차증권</span></div>
+    <div class="cl-cell"><span class="cl-num">07</span><span class="cl-name">선마린바이오테크</span></div>
+    <div class="cl-cell"><span class="cl-num">08</span><span class="cl-name">다미즐</span></div>
   </div>
 </section>
 
